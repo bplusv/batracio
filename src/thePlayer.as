@@ -4,6 +4,7 @@
 	import net.flashpunk.utils.Input;
 	import net.flashpunk.utils.Key;
 	import net.flashpunk.FP;
+	import net.flashpunk.graphics.Text;
 	
 	public class thePlayer extends Entity {
 		private var power:Number = 0.2;
@@ -13,27 +14,52 @@
 		private var xSpeed:Number = 0;
 		private var ySpeed:Number = 0;
 		private var gravity:Number = 0.3;
+		private var health:Number = 100;
+		private var lives:Number = 3;
+		private const superSpeed:Number = 3.5;
+		
 		[Embed(source='assets/player.png')]
 		private const PLAYER:Class;
 		
 		public function thePlayer() {
-			graphic = new Image(PLAYER);
+			graphic = new Image(PLAYER);			
 			setHitbox(13, 26);
 			x = 305;
 			y = 225;
 		}
 		
+		public function getHealth():Number
+		{
+			return health;
+		}
+
 		override public function update():void {
 			var pressed:Boolean = false;
+			var superSpeedPressed:Boolean = false;
+			
+			if (Input.check(Key.B))
+				superSpeedPressed = true;
+			else
+				superSpeedPressed = false;
+			
 			if (Input.check(Key.LEFT)) {
+				
+				if(!superSpeedPressed)
 				xSpeed -= power;
+				else
+				xSpeed -= power*superSpeed;
 				pressed = true;
 			}
+
+				
 			if (Input.check(Key.RIGHT)) {
+				if(!superSpeedPressed)
 				xSpeed += power;
+				else
+				xSpeed += power*superSpeed;
 				pressed = true;
 			}
-			if (collide("wall", x, y + 1)) {
+			if (collide("wall", x, y + 1) || collide("water", x, y + 1) && superSpeedPressed) {
 				ySpeed = 0;
 				if (Input.check(Key.UP)) {
 					ySpeed -= jumpPower;
