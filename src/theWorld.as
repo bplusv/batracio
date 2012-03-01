@@ -17,7 +17,7 @@
 				add(new theWall(i, 0));
 				
 				if(i < 12)
-					add(new theWall(i, 14));
+					add(new Ground(i, 14));
 				else
 					add(new leWater(i, 14));
 			}
@@ -26,10 +26,10 @@
 				add(new theWall(19, i));
 			}
 			for (i = 1; i < 5; i++) {
-				add(new theWall(5 - i, 14 - i));
-				add(new theWall(8 + i, 5 + i));
-				add(new theWall(2 + i, 10 - i));
-				add(new theWall(13 + i, 8 - i));
+				add(new Cloud(5 - i, 14 - i));
+				add(new Cloud(8 + i, 5 + i));
+				add(new Cloud(2 + i, 10 - i));
+				add(new Cloud(13 + i, 8 - i));
 			}
 		}
 		
