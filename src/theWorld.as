@@ -7,10 +7,13 @@
 		
 		private var playerHealth:Text;
 		private var player:thePlayer;
+		private var enemy:theEnemy;
 		
 		public function theWorld() {
 			player = new thePlayer();
-			add(player);	
+			enemy  = new theEnemy();
+ 			add(player);
+		    add(enemy);
 			playerHealth = new Text("Health: "+player.getHealth().toString());	
 			var i:int = 0
 			for (i = 0; i < 20; i++) {
@@ -36,6 +39,8 @@
 		override public function begin():void
 		{
 			addGraphic(playerHealth, 0, 35, 35);
+			
+			
 		}
 		
 		override public function update():void

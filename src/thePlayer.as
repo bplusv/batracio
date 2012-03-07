@@ -17,12 +17,14 @@
 		private var health:Number = 100;
 		private var lives:Number = 3;
 		private const superSpeed:Number = 3.5;
-		
+		public var hurt;
 		[Embed(source='assets/player.png')]
 		private const PLAYER:Class;
 		
-		public function thePlayer() {
-			graphic = new Image(PLAYER);			
+		public function thePlayer()
+		{
+			hurt = new Image(PLAYER);			
+			graphic = hurt;
 			setHitbox(13, 26);
 			x = 305;
 			y = 225;
@@ -59,7 +61,8 @@
 				xSpeed += power*superSpeed;
 				pressed = true;
 			}
-			if (collide("wall", x, y + 1) || collide("water", x, y + 1) && superSpeedPressed) {
+			if (collide("wall", x, y + 1) || collide("water", x, y + 1) && superSpeedPressed) 
+			{
 				ySpeed = 0;
 				if (Input.check(Key.UP)) {
 					ySpeed -= jumpPower;
@@ -67,9 +70,23 @@
 			} else {
 				ySpeed += gravity;
 			}
-			if (Math.abs(xSpeed) < 1 && !pressed) {
+			if (Math.abs(xSpeed) < 1 && !pressed) 
+			{
 				xSpeed = 0;
 			}
+			if (collide("enemy", x, y))
+			 {
+				 hurt.color = 0xff0000;
+			     health = health - 2;
+				 if (health == 0)
+				 {lives - 1;
+				  
+				 }
+			 }
+			 else 
+			 {
+				hurt.color = 0xfffff;
+			 }
 			xSpeed *= hFriction;
 			ySpeed *= vFriction;
 			adjustXPosition();
