@@ -1,15 +1,16 @@
-package  {
+package {
 	import net.flashpunk.Engine;
 	import net.flashpunk.FP;
+	import worlds.World1;
 	
 	public class Main extends Engine {
 		public function Main() {
-			super(640, 480, 60, false);
+			super(800, 640, 60, false);
 		}
 		
 		override public function init():void {
-			FP.screen.color = 0x222233;
-			FP.world = new theWorld;
+			FP.screen.color = 0xffffff;
+			FP.world = new World1;
 		}
 	}
 }
