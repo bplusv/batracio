@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Name>New Project</Name>
+  <Name>Batracio</Name>
   <BackgroundColor A="255" R="125" G="160" B="255" />
   <GridColor A="255" R="255" G="240" B="90" />
   <LevelDefaultSize>
@@ -12,19 +12,31 @@
     <Height>640</Height>
   </LevelMinimumSize>
   <LevelMaximumSize>
+    <Width>16000</Width>
+    <Height>12800</Height>
+  </LevelMaximumSize>
+  <Filename>D:\www\Mercurial\batracio\assets\levels\LevelsProyect.oep</Filename>
+  <AngleMode>Radians</AngleMode>
+  <CameraEnabled>true</CameraEnabled>
+  <CameraSize>
     <Width>800</Width>
     <Height>640</Height>
-  </LevelMaximumSize>
-  <Filename>D:\www\Mercurial\batracio\dev\batracioOgmo.oep</Filename>
-  <AngleMode>Radians</AngleMode>
-  <CameraEnabled>false</CameraEnabled>
-  <CameraSize>
-    <Width>640</Width>
-    <Height>480</Height>
   </CameraSize>
-  <ExportCameraPosition>false</ExportCameraPosition>
+  <ExportCameraPosition>true</ExportCameraPosition>
   <LevelValueDefinitions />
   <LayerDefinitions>
+    <LayerDefinition xsi:type="TileLayerDefinition">
+      <Name>Tiles</Name>
+      <Grid>
+        <Width>32</Width>
+        <Height>32</Height>
+      </Grid>
+      <ScrollFactor>
+        <X>1</X>
+        <Y>1</Y>
+      </ScrollFactor>
+      <ExportMode>XML</ExportMode>
+    </LayerDefinition>
     <LayerDefinition xsi:type="GridLayerDefinition">
       <Name>Solids</Name>
       <Grid>
@@ -36,10 +48,10 @@
         <Y>1</Y>
       </ScrollFactor>
       <Color A="255" R="0" G="0" B="0" />
-      <ExportMode>Bitstring</ExportMode>
+      <ExportMode>Rectangles</ExportMode>
     </LayerDefinition>
     <LayerDefinition xsi:type="EntityLayerDefinition">
-      <Name>Objects</Name>
+      <Name>Entities</Name>
       <Grid>
         <Width>32</Width>
         <Height>32</Height>
@@ -48,51 +60,12 @@
         <X>1</X>
         <Y>1</Y>
       </ScrollFactor>
-    </LayerDefinition>
-    <LayerDefinition xsi:type="TileLayerDefinition">
-      <Name>Tiles</Name>
-      <Grid>
-        <Width>32</Width>
-        <Height>32</Height>
-      </Grid>
-      <ScrollFactor>
-        <X>1</X>
-        <Y>1</Y>
-      </ScrollFactor>
-      <ExportMode>XMLCoords</ExportMode>
     </LayerDefinition>
   </LayerDefinitions>
   <Tilesets>
     <Tileset>
-      <Name>Brick</Name>
-      <FilePath>..\src\assets\worlds\tiles\brick.png</FilePath>
-      <TileSize>
-        <Width>32</Width>
-        <Height>32</Height>
-      </TileSize>
-      <TileSep>0</TileSep>
-    </Tileset>
-    <Tileset>
-      <Name>Grass</Name>
-      <FilePath>..\src\assets\worlds\tiles\grass.png</FilePath>
-      <TileSize>
-        <Width>32</Width>
-        <Height>32</Height>
-      </TileSize>
-      <TileSep>0</TileSep>
-    </Tileset>
-    <Tileset>
-      <Name>Cloud</Name>
-      <FilePath>..\src\assets\worlds\tiles\cloud.png</FilePath>
-      <TileSize>
-        <Width>32</Width>
-        <Height>32</Height>
-      </TileSize>
-      <TileSep>0</TileSep>
-    </Tileset>
-    <Tileset>
-      <Name>Water</Name>
-      <FilePath>..\src\assets\worlds\tiles\water.png</FilePath>
+      <Name>Level1</Name>
+      <FilePath>..\gfx\Level1.png</FilePath>
       <TileSize>
         <Width>32</Width>
         <Height>32</Height>
@@ -101,7 +74,7 @@
     </Tileset>
   </Tilesets>
   <EntityDefinitions>
-    <EntityDefinition Name="Batracio" Limit="1" ResizableX="false" ResizableY="false" Rotatable="false" RotateIncrement="15">
+    <EntityDefinition Name="batracio" Limit="1" ResizableX="false" ResizableY="false" Rotatable="false" RotateIncrement="15">
       <Size>
         <Width>64</Width>
         <Height>32</Height>
@@ -110,7 +83,7 @@
         <X>0</X>
         <Y>0</Y>
       </Origin>
-      <ImageDefinition DrawMode="Image" ImagePath="..\src\assets\characters\batracio.png" Tiled="false">
+      <ImageDefinition DrawMode="Image" ImagePath="..\gfx\batracio.png" Tiled="true">
         <RectColor A="255" R="255" G="0" B="0" />
       </ImageDefinition>
       <ValueDefinitions />

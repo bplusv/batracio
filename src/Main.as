@@ -5,12 +5,13 @@ package {
 	
 	public class Main extends Engine {
 		public function Main() {
-			super(800, 640, 60, false);
+			super(800, 640, 100, false);
 		}
 		
 		override public function init():void {
 			FP.screen.color = 0xffffff;
 			FP.world = new World1;
+			FP.console.enable();
 		}
 	}
 }

@@ -6,13 +6,8 @@
 	import net.flashpunk.utils.Input;
 	import net.flashpunk.utils.Key;
 	import net.flashpunk.FP;
-	import worlds.tiles.Tile;
 	
 	public class Batracio extends Entity {
-		private const BATRACIO_WIDTH:int = Tile.SIZE * 2;
-		private const BATRACIO_HEIGHT:int = Tile.SIZE * 1;
-		[Embed(source='/assets/characters/batracio.png')]
-		private const BATRACIO_PNG:Class;
 		private var animations:Spritemap;
 		private var gravity:Number = 0.3;
 		private var walkAccel:Number = 0.2;
@@ -25,9 +20,9 @@
 		private var state:String = 'standing';
 		
 		public function Batracio(posX:int, posY:int) {
-			x = posX * Tile.SIZE; y = posY * Tile.SIZE;
-			setHitbox(BATRACIO_WIDTH, BATRACIO_HEIGHT);
-			animations = new Spritemap(BATRACIO_PNG, 64, 32);
+			x = posX; y = posY;
+			width = GC.TILE_SIZE * 2; height = GC.TILE_SIZE;
+			animations = new Spritemap(GC.BATRACIO_PNG, width, height);
 			animations.add('standing', [0], 0, false);
 			animations.add('walking', [1, 2], 8, true);
 			animations.add('jumping', [3, 4], 8, false);
@@ -36,7 +31,7 @@
 			Input.define('walking', Key.LEFT, Key.RIGHT, Key.A, Key.D);
 			Input.define('walkLeft', Key.LEFT, Key.A);
 			Input.define('walkRight', Key.RIGHT, Key.D);
-			Input.define('jump', Key.UP, Key.W);
+			Input.define('jump', Key.UP, Key.W, Key.SPACE);
 		}
 		
 		override public function update():void {
@@ -46,7 +41,7 @@
 		}
 		
 		private function updateMovement():void {
-			if (collideTypes(['grass' , 'cloud'], x, y + 1)) isOnFloor = true; else { isOnFloor = false; ySpeed += gravity; }
+			if (collideTypes(['level' , 'cloud'], x, y + 1)) isOnFloor = true; else { isOnFloor = false; ySpeed += gravity; }
 			if (Input.pressed('jump') && isOnFloor) ySpeed -= jumpAccel;
 			if (Input.check('walkRight')) { xSpeed += walkAccel; animations.flipped = false; }
 			if (Input.check('walkLeft')) { xSpeed -= walkAccel; animations.flipped = true; }
@@ -57,8 +52,8 @@
 		private function adjustXPosition():void {
 			for (var i:int = 0; i < Math.abs(xSpeed); i++) {
 				switch (FP.sign(xSpeed)) {
-					case -1: if (!collideTypes(['brick'], x - 1, y)) x--; else xSpeed = 0; break;
-					case 1: if (!collideTypes(['brick'], x + 1, y)) x++; else xSpeed = 0; break;
+					case -1: if (!collideTypes(['level'], x - 1, y)) x--; else xSpeed = 0; break;
+					case 1: if (!collideTypes(['level'], x + 1, y)) x++; else xSpeed = 0; break;
 				}
 			}
 		}
@@ -66,8 +61,8 @@
 		private function adjustYPosition():void {
 			for (var i:int = 0; i < Math.abs(ySpeed); i++) {
 				switch (FP.sign(ySpeed)) {
-					case -1: if (!collideTypes(['grass'], x, y - 1)) y--; else ySpeed = 0; break;
-					case 1: if (!collideTypes(['grass', 'cloud'], x, y + 1)) y++; else ySpeed = 0; break;
+					case -1: if (!collideTypes(['level'], x, y - 1)) y--; else ySpeed = 0; break;
+					case 1: if (!collideTypes(['level', 'cloud'], x, y + 1)) y++; else ySpeed = 0; break;
 				}
 			}
 		}

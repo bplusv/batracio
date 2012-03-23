@@ -16,7 +16,7 @@
     </define>
     <define append="true">
       <name>CONFIG::timeStamp</name>
-      <value>'3/11/2012'</value>
+      <value>'3/23/2012'</value>
     </define>
     <verbose-stacktraces>true</verbose-stacktraces>
     <source-path append="true">
@@ -28,7 +28,7 @@
     <path-element>D:\www\Mercurial\batracio\src\Main.as</path-element>
   </file-specs>
   <default-background-color>#FFFFFF</default-background-color>
-  <default-frame-rate>30</default-frame-rate>
+  <default-frame-rate>100</default-frame-rate>
   <default-size>
     <width>800</width>
     <height>640</height>
