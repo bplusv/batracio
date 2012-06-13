@@ -35,7 +35,7 @@
 			Input.define('walkLeft', Key.LEFT, Key.A);
 			Input.define('walkRight', Key.RIGHT, Key.D);
 			Input.define('jump', Key.UP, Key.W, Key.SPACE);
-			Input.define('attack', Key.F);
+			Input.define('attack', Key.CONTROL);
 		}
 		
 		//Callback function for animation end
