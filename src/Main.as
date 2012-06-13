@@ -11,7 +11,7 @@ package {
 		override public function init():void {
 			FP.screen.color = 0xffffff;
 			FP.world = new World1;
-			FP.console.enable();
+
 		}
 	}
 }
