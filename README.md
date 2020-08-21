@@ -1,2 +1,2 @@
-Batricio is a videogames based on a lizard & platforms, made in ActionScript and FlashPunk
-========
+# Batricio
+Batracio is a videogame about a lizard and platforms, made in ActionScript and FlashPunk.
